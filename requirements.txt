@@ -1,2 +1,2 @@
-komootgpx==1.5.0
+komootgpx==1.6.2
 pyTelegramBotAPI==4.33.0
