@@ -1,5 +1,5 @@
 # Stage 1: build Rust komootgpx (for public smarttour/tour URLs)
-FROM rust:1.99.0-slim-bookworm AS rust
+FROM rust:1.99.1-slim-bookworm AS rust
 RUN apt-get update && apt-get install -y --no-install-recommends git && rm -rf /var/lib/apt/lists/*
 RUN cargo install --git https://github.com/cdown/komootgpx
 
