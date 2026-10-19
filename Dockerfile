@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends git && rm -rf /
 RUN cargo install --git https://github.com/cdown/komootgpx
 
 # Stage 2: Python bot + both komootgpx tools
-FROM python:3.10-slim
+FROM python:3.14-slim
 WORKDIR /app
 
 COPY requirements.txt /app/
