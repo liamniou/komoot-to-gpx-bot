@@ -19,12 +19,16 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - id: version
+        # Dependabot-bumpable tag (YYYY.M.D.run) for gitops pins.
+        run: echo "tag=$(date -u +%Y.%-m.%-d).${{ github.run_number }}" >> "$GITHUB_OUTPUT"
       - uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           tags: |
             ghcr.io/liamniou/komoot-to-gpx-bot:latest
+            ghcr.io/liamniou/komoot-to-gpx-bot:${{ steps.version.outputs.tag }}
             ghcr.io/liamniou/komoot-to-gpx-bot:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
